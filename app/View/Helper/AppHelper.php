@@ -40,11 +40,11 @@ class AppHelper extends Helper
 	 */
 	public function url($url = null, $full = false)
 	{
-        if(is_array($url) && !isset($url['language']))
-        {
-         	$url['language'] = $_SESSION['Config']['languageCode'];
-        }
-        
-        return parent::url($url, $full);
-   }
+		if(is_array($url) && !isset($url['language']))
+		{
+			$url['language'] = $_SESSION['Config']['languageCode'];
+		}
+		
+		return parent::url($url, $full);
+	}
 }

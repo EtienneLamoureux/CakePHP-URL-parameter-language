@@ -46,66 +46,67 @@ class LanguageComponent extends Component
 	 * 
 	 * @example $this->Language->set($this->params['language']);
 	 */
-    public function set($language = null)
-    {
-    	$this->setLocaleFromLanguage($language);
-    	$this->setLocaleForI18nAndTranslateBehavior();
-    }
-    
-    /**
-     * Returns the current ISO 639-2 locale code of your application
-     */
-    public function getLocale()
-    {
-    	return $this->Session->read('Config.language');
-    }
-    
-    /**
-     * Returns the current user-defined language code of your application
-     * Can be used in AppController::beforeRender
-     * 
-     * @example $this->set('language', $this->Language->getLanguage());
-     */
-    public function getLanguage()
-    {
-    	return $this->convertLocaleToLanguage($this->getLocale());
-    }
-    
-    private function convertLocaleToLanguage($locale)
-    {
-    	return array_search($locale, $this->supportedLanguages);
-    }
-    
-    private function convertLanguageToLocale($language)
-    {
-    	return $this->supportedLanguages[$language];
-    }
-    
-	private function setLocaleFromLanguage($language)
+	public function set($language = null)
 	{
-	    if ($this->localeIsOnlySetInCookie())
-	    {
-	        $this->setLocaleForCakePHP($this->Cookie->read('locale'));
-	    } 
-	    else if ($this->languageIsInURL($language))
-	    {
-	    	if ($this->languageChanged($language))
-	    	{
-		    	$locale = $this->convertLanguageToLocale($language);
-		    	$this->setLocale($locale);
-	    	}
-	    }
-	    else
-	    {
-	    	$locales = array_values($this->supportedLanguages);
-	    	$this->setLocale($locales[0]);
-	    }
+		$this->setLocaleFromLanguage($language);
+		$this->setLocaleForI18nAndTranslateBehavior();
 	}
 	
+	/**
+	 * Returns the current ISO 639-2 locale code of your application
+	 */
+	public function getLocale()
+	{
+		return $this->Session->read('Config.language');
+	}
+	
+	/**
+	 * Returns the current user-defined language code of your application
+	 * Can be used in AppController::beforeRender
+	 * 
+	 * @example $this->set('language', $this->Language->getLanguage());
+	 */
+	public function getLanguage()
+	{
+		return $this->convertLocaleToLanguage($this->getLocale());
+	}
+	
+	private function convertLocaleToLanguage($locale)
+	{
+		return array_search($locale, $this->supportedLanguages);
+	}
+	
+	private function convertLanguageToLocale($language)
+	{
+		return $this->supportedLanguages[$language];
+	}
+	
+	private function setLocaleFromLanguage($language)
+	{
+		if ($this->localeIsOnlySetInCookie())
+		{
+			$this->setLocaleForCakePHP($this->Cookie->read('locale'));
+		} 
+		else if ($this->languageIsInURL($language))
+		{
+			//DO NOT MERGE with else if. Necessary for initial language set.
+			if ($this->languageChanged($language))
+			{
+				$locale = $this->convertLanguageToLocale($language);
+				$this->setLocale($locale);
+			}
+		}
+		else
+		{
+			$locales = array_values($this->supportedLanguages);
+			$this->setLocale($locales[0]);
+		}
+	}
+
 	private function setLocale($locale)
 	{
-	    $this->setLocaleForCakePHP($locale);
-	    $this->setCookie($locale);
+		$this->setLocaleForCakePHP($locale);
+		$this->setCookie($locale);
 	}
 	
 	private function localeIsOnlySetInCookie()
@@ -124,15 +125,15 @@ class LanguageComponent extends Component
 	{
 		$this->Cookie->write('locale', $locale, false, $duration);
 	}
-    
-    private function setLocaleForI18nAndTranslateBehavior()
-    {
-    	if ($this->Session->check('Config.language'))
-    	{
-            Configure::write('Config.language', $this->Session->read('Config.language'));
-            setlocale(LC_TIME, $this->Session->read('Config.language'));
-        }
-    }
+	
+	private function setLocaleForI18nAndTranslateBehavior()
+	{
+		if ($this->Session->check('Config.language'))
+		{
+			Configure::write('Config.language', $this->Session->read('Config.language'));
+			setlocale(LC_TIME, $this->Session->read('Config.language'));
+		}
+	}
 	
 	private function languageIsInURL($language)
 	{
