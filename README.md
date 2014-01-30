@@ -16,3 +16,9 @@ The unmodified files of this project add a mandatory language parameter to the U
 You should be able to change the language of the current page by changing only the language parameter in the URL. To generate a generic language-changing link, use a variant of the following in your layouts or views: 
 
 `echo $this->Html->link('Français', array('language'=>'fr'));`
+
+Other
+==============================
+For a concrete example of the LanguageComponent in action, visit <http://www.crystalgorithm.com>
+
+Original idea by [Dorin Moise](http://colorblindprogramming.com/multiple-languages-in-a-cakephp-2-application-in-5-steps)
