@@ -20,8 +20,8 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
  
- //user-defined language codes here
- $languageCodes = array('language' => 'en|fr');
+//user-defined language codes here, must be same ones used for the LanguageComponent
+$languageCodes = array('language' => 'en|fr');
  
 /**
  * Here, we are connecting '/' (base path) to controller called 'Pages',

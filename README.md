@@ -5,7 +5,7 @@ Manage the language of your CakePHP 2.x application with a parameter in the URL
 
 Installation
 ==============================
-To install this functionality to your CakePHP application, simply copy the "app" folder of this project into a new CakePHP application. If your application isn't a brand-new CakePHP installation, you may have to copy and paste the individual functions/lines into the right files.
+To install this functionality to your CakePHP application, simply copy the "app" folder of this project into a new CakePHP application. If your application isn't a brand-new CakePHP installation, you may have to copy and paste the individual functions/lines into the right files. For complete installation notes, visit [this link](http://www.crystalgorithm.com/en/blog/Dynamically%20change%20CakePHP%20language).
 
 Usage
 ==============================
