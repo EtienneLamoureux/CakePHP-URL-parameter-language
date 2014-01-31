@@ -9,7 +9,7 @@ To install this functionality to your CakePHP application, simply copy the "app"
 
 Usage
 ==============================
-The unmodified files of this project add a mandatory language parameter to the URL of your application. Except for "Home", your application's URLs will look like:
+The unmodified files of this project add a mandatory language parameter to the URL of your application, except for "Home". Your application's URLs will look like:
 
 `http://www.example.com/en/controller/action`
 
