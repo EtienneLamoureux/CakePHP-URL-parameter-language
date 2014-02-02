@@ -47,7 +47,6 @@ $languageCodes = array('language' => 'en|fr');
 	//default cakePHP routing, with language codes
 	Router::connect('/:language/:controller/:action/*', array(), $languageCodes);
 	Router::connect('/:language/:controller', array('action' => 'index'), $languageCodes);	
-	Router::connect('/:language', array('controller' => 'pages', 'action' => 'home'), $languageCodes);
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on
